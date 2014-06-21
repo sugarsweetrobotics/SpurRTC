@@ -10,7 +10,7 @@
 #   --module-desc='Spur RT-Component' --module-version=1.0.0 --module-vendor=Sugar Sweet Robotics 
 #   --module-category=Experimental --module-comp-type=STATIC 
 #   --module-act-type=PERIODIC --module-max-inst=1 
-#   --config=debug:int:0 
+#   --config=debug:int:0 --config=max_vel:double:0.2 --config=max_acc:double:0.2 --config=max_rot_vel:double:0.52 --config=max_rot_acc:double:0.314 
 #   --inport=targetVelocity:RTC::TimedVelocity2D --inport=poseUpdate:RTC::TimedPose2D --outport=currentVelocity:RTC::TimedVelocity2D --outport=currentPose:RTC::TimedPose2D 
 
 
@@ -165,6 +165,38 @@ Lang Type:
 		Description:     
 		Type:            int
 		DefaultValue:     0
+		Unit:            
+		Range:           
+		Constraint:      
+
+		Name:             max_vel
+		Description:     
+		Type:            double
+		DefaultValue:     0.2
+		Unit:            
+		Range:           
+		Constraint:      
+
+		Name:             max_acc
+		Description:     
+		Type:            double
+		DefaultValue:     0.2
+		Unit:            
+		Range:           
+		Constraint:      
+
+		Name:             max_rot_vel
+		Description:     
+		Type:            double
+		DefaultValue:     0.52
+		Unit:            
+		Range:           
+		Constraint:      
+
+		Name:             max_rot_acc
+		Description:     
+		Type:            double
+		DefaultValue:     0.314
 		Unit:            
 		Range:           
 		Constraint:      

@@ -30,6 +30,18 @@ SpurRTC.h
 ypspur.h
 -
 
+/Users/ysuga/Development/rtm/wasanbon/workspace/spur_test/rtc/SpurRTC/src/SpurRTCComp.cpp
+rtm/Manager.h
+-
+iostream
+-
+string
+-
+stdlib.h
+-
+SpurRTC.h
+/Users/ysuga/Development/rtm/wasanbon/workspace/spur_test/rtc/SpurRTC/src/SpurRTC.h
+
 /usr/local/include/coil-1.1/coil/ClockManager.h
 string
 -

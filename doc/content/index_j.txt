@@ -99,6 +99,10 @@ SpurRTCは ``SpurRTCComp`` を実行（ ``${prefix}/components/bin`` に
 パラメータ       データ型           デフォルト値     意味
 ================ ================== ================ ====
 debug            int                0                
+max_vel          double             0.2              
+max_acc          double             0.2              
+max_rot_vel      double             0.52             
+max_rot_acc      double             0.314            
 ================ ================== ================ ====
 
 ポート

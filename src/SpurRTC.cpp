@@ -26,8 +26,16 @@ static const char* spurrtc_spec[] =
     "lang_type",         "compile",
     // Configuration variables
     "conf.default.debug", "0",
+    "conf.default.max_vel", "0.2",
+    "conf.default.max_acc", "0.2",
+    "conf.default.max_rot_vel", "0.52",
+    "conf.default.max_rot_acc", "0.314",
     // Widget
     "conf.__widget__.debug", "text",
+    "conf.__widget__.max_vel", "text",
+    "conf.__widget__.max_acc", "text",
+    "conf.__widget__.max_rot_vel", "text",
+    "conf.__widget__.max_rot_acc", "text",
     // Constraints
     ""
   };
@@ -81,6 +89,10 @@ RTC::ReturnCode_t SpurRTC::onInitialize()
   // <rtc-template block="bind_config">
   // Bind variables and configuration variable
   bindParameter("debug", m_debug, "0");
+  bindParameter("max_vel", m_max_vel, "0.2");
+  bindParameter("max_acc", m_max_acc, "0.2");
+  bindParameter("max_rot_vel", m_max_rot_vel, "0.52");
+  bindParameter("max_rot_acc", m_max_rot_acc, "0.314");
   // </rtc-template>
   
   return RTC::RTC_OK;

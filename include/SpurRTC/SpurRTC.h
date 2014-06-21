@@ -229,6 +229,30 @@ class SpurRTC
    * - DefaultValue: 0
    */
   int m_debug;
+  /*!
+   * 
+   * - Name:  max_vel
+   * - DefaultValue: 0.2
+   */
+  double m_max_vel;
+  /*!
+   * 
+   * - Name:  max_acc
+   * - DefaultValue: 0.2
+   */
+  double m_max_acc;
+  /*!
+   * 
+   * - Name:  max_rot_vel
+   * - DefaultValue: 0.52
+   */
+  double m_max_rot_vel;
+  /*!
+   * 
+   * - Name:  max_rot_acc
+   * - DefaultValue: 0.314
+   */
+  double m_max_rot_acc;
 
   // </rtc-template>
 
