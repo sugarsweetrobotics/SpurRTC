@@ -8,7 +8,7 @@
  */
 
 #include "SpurRTC.h"
-#include <ypspur.h>
+
 // Module specification
 // <rtc-template block="module_spec">
 static const char* spurrtc_spec[] =
@@ -51,7 +51,8 @@ SpurRTC::SpurRTC(RTC::Manager* manager)
     m_targetVelocityIn("targetVelocity", m_targetVelocity),
     m_poseUpdateIn("poseUpdate", m_poseUpdate),
     m_currentVelocityOut("currentVelocity", m_currentVelocity),
-    m_currentPoseOut("currentPose", m_currentPose)
+    m_currentPoseOut("currentPose", m_currentPose),
+    m_spurPort("spur")
 
     // </rtc-template>
 {
@@ -79,10 +80,12 @@ RTC::ReturnCode_t SpurRTC::onInitialize()
   addOutPort("currentPose", m_currentPoseOut);
   
   // Set service provider to Ports
+  m_spurPort.registerProvider("YPSpur", "spur::YPSpur", m_spur);
   
   // Set service consumers to Ports
   
   // Set CORBA Service Ports
+  addPort(m_spurPort);
   
   // </rtc-template>
 
@@ -122,47 +125,18 @@ RTC::ReturnCode_t SpurRTC::onShutdown(RTC::UniqueId ec_id)
 
 RTC::ReturnCode_t SpurRTC::onActivated(RTC::UniqueId ec_id)
 {
-  Spur_init();
   return RTC::RTC_OK;
 }
 
 
 RTC::ReturnCode_t SpurRTC::onDeactivated(RTC::UniqueId ec_id)
 {
-  Spur_stop();
   return RTC::RTC_OK;
 }
 
 
 RTC::ReturnCode_t SpurRTC::onExecute(RTC::UniqueId ec_id)
 {
-  if (m_targetVelocityIn.isNew()) {
-    m_targetVelocityIn.read();
-    Spur_vel(m_targetVelocity.data.vx, m_targetVelocity.data.va);
-  }
-
-  if (m_poseUpdateIn.isNew()) {
-    m_poseUpdateIn.read();
-    Spur_adjust_pos_GL(m_poseUpdate.data.position.x, m_poseUpdate.data.position.y, m_poseUpdate.data.heading);
-  }
-
-  double x, y, th;
-  Spur_get_pos_GL(&x, &y, &th);
-  m_currentPose.data.position.x = x;
-  m_currentPose.data.position.y = y;
-  m_currentPose.data.heading = th;
-  setTimestamp(m_currentPose);
-  m_currentPoseOut.write();
-
-
-  double v, w;
-  Spur_get_vel(&v, &w);
-  m_currentVelocity.data.vx = v;
-  m_currentVelocity.data.vy = 0;
-  m_currentVelocity.data.va = th;
-  setTimestamp(m_currentVelocity);
-  m_currentVelocityOut.write();
-  
   return RTC::RTC_OK;
 }
 

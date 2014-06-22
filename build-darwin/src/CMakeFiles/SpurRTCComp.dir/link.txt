@@ -1,1 +1,0 @@
-g++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/SpurRTCComp.dir/SpurRTCComp.cpp.o CMakeFiles/SpurRTCComp.dir/SpurRTC.cpp.o  -o SpurRTCComp  -L/usr/local/lib  -lomniORB4 -lomnithread -lomniDynamic4 -lRTC -lcoil /usr/local/lib/libypspur.dylib 

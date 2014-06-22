@@ -1,4 +1,4 @@
-set(comp_srcs SpurRTC.cpp )
+set(comp_srcs SpurRTC.cpp SpurSVC_impl.cpp )
 set(standalone_srcs SpurRTCComp.cpp)
 
 if (DEFINED OPENRTM_INCLUDE_DIRS)

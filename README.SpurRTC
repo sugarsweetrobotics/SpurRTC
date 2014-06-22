@@ -12,6 +12,8 @@
 #   --module-act-type=PERIODIC --module-max-inst=1 
 #   --config=debug:int:0 --config=max_vel:double:0.2 --config=max_acc:double:0.2 --config=max_rot_vel:double:0.52 --config=max_rot_acc:double:0.314 
 #   --inport=targetVelocity:RTC::TimedVelocity2D --inport=poseUpdate:RTC::TimedPose2D --outport=currentVelocity:RTC::TimedVelocity2D --outport=currentPose:RTC::TimedPose2D 
+#   --service-idl=/Users/ysuga/Development/rtm/wasanbon/workspace/spur_test/rtc/SpurRTC/idl/Spur.idl 
+#   --service=spur:YPSpur:spur::YPSpur 
 
 
 ======================================================================
@@ -154,6 +156,18 @@ Lang Type:
     Service Port definition
 ======================================================================
 # <rtc-template block="serviceport">
+	PortName:    spur
+	Description: 
+	Interface:   
+		[Service Provider Interfaces]
+		Name:          YPSpur
+		Type:          spur::YPSpur
+		Description:   
+		Argument:      
+		Return Value:  
+		Exception:     
+		PreCondition:  
+		PostCondition: 
 # </rtc-template> 
 
 ======================================================================

@@ -117,6 +117,7 @@ targetVelocity  InPort      RTC::TimedVelocity2D
 poseUpdate      InPort      RTC::TimedPose2D               
 currentVelocity OutPort     RTC::TimedVelocity2D           
 currentPose     OutPort     RTC::TimedPose2D               
+YPSpur          ServicePort spur::YPSpur                   
 =============== =========== ============================== ====
 
 例

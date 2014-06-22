@@ -1,1 +1,0 @@
-g++   -dynamiclib -Wl,-headerpad_max_install_names   -o SpurRTC.dylib -install_name /Users/ysuga/Development/rtm/wasanbon/workspace/spur_test/rtc/SpurRTC/build-darwin/src/SpurRTC.dylib CMakeFiles/SpurRTC.dir/SpurRTC.cpp.o  -L/usr/local/lib -lomniORB4 -lomnithread -lomniDynamic4 -lRTC -lcoil /usr/local/lib/libypspur.dylib 

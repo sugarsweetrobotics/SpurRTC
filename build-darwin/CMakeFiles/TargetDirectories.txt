@@ -1,4 +1,0 @@
-/Users/ysuga/Development/rtm/wasanbon/workspace/spur_test/rtc/SpurRTC/build-darwin/src/CMakeFiles/SpurRTC.dir
-/Users/ysuga/Development/rtm/wasanbon/workspace/spur_test/rtc/SpurRTC/build-darwin/src/CMakeFiles/SpurRTCComp.dir
-/Users/ysuga/Development/rtm/wasanbon/workspace/spur_test/rtc/SpurRTC/build-darwin/doc/CMakeFiles/doxygen_doc.dir
-/Users/ysuga/Development/rtm/wasanbon/workspace/spur_test/rtc/SpurRTC/build-darwin/CMakeFiles/uninstall.dir

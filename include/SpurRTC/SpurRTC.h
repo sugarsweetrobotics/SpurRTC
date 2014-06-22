@@ -21,6 +21,7 @@
 
 // Service implementation headers
 // <rtc-template block="service_impl_h">
+#include "SpurSVC_impl.h"
 
 // </rtc-template>
 
@@ -285,11 +286,17 @@ class SpurRTC
 
   // CORBA Port declaration
   // <rtc-template block="corbaport_declare">
+  /*!
+   */
+  RTC::CorbaPort m_spurPort;
   
   // </rtc-template>
 
   // Service declaration
   // <rtc-template block="service_declare">
+  /*!
+   */
+  YPSpurSVC_impl m_spur;
   
   // </rtc-template>
 

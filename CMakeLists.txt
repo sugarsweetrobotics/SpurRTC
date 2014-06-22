@@ -54,11 +54,17 @@ else(${OpenRTM_FOUND})
   find_package(OpenRTM REQUIRED)
 endif(${OpenRTM_FOUND})
 
+if(WIN32)
+set(YPSPUR_DIR $ENV{SPUR_ROOT})
+set(YPSPUR_LIBRARY ypspur)
+else(WIN32)
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Module)
+find_package(YPSpur)
+endif(WIN32)
+
+
 # Universal settings
 #enable_testing()
-
-list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
-find_package(YPSpur)
 
 # Subdirectories
 add_subdirectory(cmake)
