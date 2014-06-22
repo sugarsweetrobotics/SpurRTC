@@ -1,0 +1,43 @@
+// YP-Spur interface for IDL
+
+
+module spur {
+
+  enum COORD_SYS {
+    CS_GL, // Global
+    CS_LC, // Local
+    CS_FS // Forcusing (Robot local)
+  };
+  interface YPSpur {
+  
+    // Set Maximum Parameters
+    long setVel(in double v);
+    long setAccel(in double v);
+    long setAngVel(in double w);
+    long setAngAccel(in double a);
+  
+    // Set Coordination System
+    long setPos(in COORD_SYS cs, in double x, in double y, in double th);
+    
+    // Update Position
+    long adjustPos(in COORD_SYS cs, in double x, in double y, in double th);
+
+    // Current Status
+    long getPos(in COORD_SYS cs, out double x, out double y, out double th);
+    long getVel(out double v, out double w);
+    boolean isNearPos(in COORD_SYS cs, in double x, in double y, in double r);
+    boolean isNearAng(in COORD_SYS cs, in double th, in double d);
+    boolean isOverLine(in COORD_SYS cs, in double x, in double y, in double th);
+    
+    // Move Control
+    long line(in COORD_SYS cs, in double x, in double y, in double th);
+    long stopLine(in COORD_SYS cs, in double x, in double y, in double th);
+    long circle(in COORD_SYS cs, in double x, in double y, in double d);
+    long spin(in COORD_SYS cs, in double th);
+    long stop();
+    long free();
+  };
+
+
+
+};
