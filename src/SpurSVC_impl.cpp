@@ -8,6 +8,8 @@
 #include "SpurSVC_impl.h"
 #include <ypspur.h>
 #include <stdint.h>
+
+using namespace spur;
 /*
  * Example implementational code for IDL interface spur::YPSpur
  */

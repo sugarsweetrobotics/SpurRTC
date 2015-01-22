@@ -1,5 +1,5 @@
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
-  #
+
 endif  ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
 
 find_path(YPSPUR_INCLUDE_DIR ypspur.h

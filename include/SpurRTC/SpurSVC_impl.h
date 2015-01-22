@@ -10,7 +10,7 @@
 #ifndef SPURSVC_IMPL_H
 #define SPURSVC_IMPL_H
 
-using namespace spur; 
+//using namespace spur; 
 /*!
  * @class YPSpurSVC_impl
  * Example class implementing IDL interface spur::YPSpur
@@ -39,17 +39,17 @@ class YPSpurSVC_impl
    CORBA::Long setAccel(CORBA::Double v);
    CORBA::Long setAngVel(CORBA::Double w);
    CORBA::Long setAngAccel(CORBA::Double a);
-   CORBA::Long setPos(COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double th);
-   CORBA::Long adjustPos(COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double th);
-   CORBA::Long getPos(COORD_SYS cs, CORBA::Double& x, CORBA::Double& y, CORBA::Double& th);
+   CORBA::Long setPos(spur::COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double th);
+   CORBA::Long adjustPos(spur::COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double th);
+   CORBA::Long getPos(spur::COORD_SYS cs, CORBA::Double& x, CORBA::Double& y, CORBA::Double& th);
    CORBA::Long getVel(CORBA::Double& v, CORBA::Double& w);
-   CORBA::Boolean isNearPos(COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double r);
-   CORBA::Boolean isNearAng(COORD_SYS cs, CORBA::Double th, CORBA::Double d);
-   CORBA::Boolean isOverLine(COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double th);
-   CORBA::Long line(COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double th);
-   CORBA::Long stopLine(COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double th);
-   CORBA::Long circle(COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double d);
-   CORBA::Long spin(COORD_SYS cs, CORBA::Double th);
+   CORBA::Boolean isNearPos(spur::COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double r);
+   CORBA::Boolean isNearAng(spur::COORD_SYS cs, CORBA::Double th, CORBA::Double d);
+   CORBA::Boolean isOverLine(spur::COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double th);
+   CORBA::Long line(spur::COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double th);
+   CORBA::Long stopLine(spur::COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double th);
+   CORBA::Long circle(spur::COORD_SYS cs, CORBA::Double x, CORBA::Double y, CORBA::Double d);
+   CORBA::Long spin(spur::COORD_SYS cs, CORBA::Double th);
    CORBA::Long stop();
    CORBA::Long free();
 

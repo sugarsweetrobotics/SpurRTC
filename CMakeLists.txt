@@ -60,10 +60,12 @@ set(YPSPUR_INCLUDE_DIR ${YPSPUR_DIR}/include)
 set(YPSPUR_LIB_DIR ${YPSPUR_DIR}/lib)
 set(YPSPUR_LIBRARY ypspur)
 else(WIN32)
-list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Module)
+message("not win")
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
 find_package(YPSpur)
 endif(WIN32)
 
+message("YPSPUR " ${YPSPUR_LIBRARY})
 
 # Universal settings
 #enable_testing()

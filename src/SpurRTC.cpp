@@ -41,6 +41,10 @@ static const char* spurrtc_spec[] =
   };
 // </rtc-template>
 
+
+#include <ypspur.h>
+#include <stdint.h>
+
 /*!
  * @brief constructor
  * @param manager Maneger Object
@@ -125,18 +129,73 @@ RTC::ReturnCode_t SpurRTC::onShutdown(RTC::UniqueId ec_id)
 
 RTC::ReturnCode_t SpurRTC::onActivated(RTC::UniqueId ec_id)
 {
+  if (Spur_init() < 0) {
+    std::cout << "[SpurRTC] Can not open Spur" << std::endl;
+    return RTC::RTC_ERROR;
+  }
+
+  Spur_set_vel(m_max_vel);
+  Spur_set_accel(m_max_acc);
+  Spur_set_angvel(m_max_rot_vel);
+  Spur_set_angaccel(m_max_rot_acc);
+
+  m_currentPose.data.position.x = 
+    m_currentPose.data.position.y = 
+    m_currentPose.data.heading = 0;
+  
   return RTC::RTC_OK;
 }
 
 
 RTC::ReturnCode_t SpurRTC::onDeactivated(RTC::UniqueId ec_id)
 {
+  Spur_stop();
+  Spur_free();
   return RTC::RTC_OK;
 }
 
 
 RTC::ReturnCode_t SpurRTC::onExecute(RTC::UniqueId ec_id)
 {
+  if (m_targetVelocityIn.isNew()) {
+    m_targetVelocityIn.read();
+    Spur_vel(m_targetVelocity.data.vx, m_targetVelocity.data.va);
+  }
+
+  if (m_poseUpdateIn.isNew()) {
+    m_poseUpdateIn.read();
+    Spur_adjust_pos_GL(m_poseUpdate.data.position.x,
+		       m_poseUpdate.data.position.y,
+		       m_poseUpdate.data.heading);
+  }
+
+  double x, y, th;
+  if(Spur_get_pos_GL(&x, &y, &th) < 0) {
+    std::cout << "Spur_get_pos_GL failed." << std::endl;
+    return RTC::RTC_ERROR;
+  }
+
+  if (m_currentPose.data.position.x != x ||
+      m_currentPose.data.position.y != y ||
+      m_currentPose.data.heading != th) {
+    m_currentPose.data.position.x = x;
+    m_currentPose.data.position.y = x;
+    m_currentPose.data.heading = th;
+    setTimestamp<RTC::TimedPose2D>(m_currentPose);
+    m_currentPoseOut.write();
+    double v, w;
+    if(Spur_get_vel(&v, &w) < 0) {
+      std::cout << "Spur_get_vel failed." << std::endl;
+      return RTC::RTC_ERROR;
+    }
+
+    m_currentVelocity.data.vx = v;
+    m_currentVelocity.data.vy = 0;
+    m_currentVelocity.data.va = w;
+    setTimestamp<RTC::TimedVelocity2D>(m_currentVelocity);
+    m_currentVelocityOut.write();
+  }
+  
   return RTC::RTC_OK;
 }
 
