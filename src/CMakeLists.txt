@@ -46,9 +46,17 @@ set_source_files_properties(${ALL_IDL_SRCS} PROPERTIES GENERATED 1)
 add_dependencies(${PROJECT_NAME} ALL_IDL_TGT)
 target_link_libraries(${PROJECT_NAME} ${OPENRTM_LIBRARIES} ${YPSPUR_LIBRARY})
 
+if(WIN32)
+ set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "/DEBUG")
+endif()
+
 add_executable(${PROJECT_NAME}Comp ${standalone_srcs}
   ${comp_srcs} ${comp_headers} ${ALL_IDL_SRCS})
 target_link_libraries(${PROJECT_NAME}Comp ${OPENRTM_LIBRARIES} ${YPSPUR_LIBRARY})
+
+if(WIN32)
+ set_target_properties(${PROJECT_NAME}Comp PROPERTIES LINK_FLAGS "/DEBUG")
+endif()
 
 install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}Comp
     EXPORT ${PROJECT_NAME}

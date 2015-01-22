@@ -54,13 +54,18 @@ else(${OpenRTM_FOUND})
   find_package(OpenRTM REQUIRED)
 endif(${OpenRTM_FOUND})
 
+if(MSVC)
+  set(CMAKE_EXE_LINKER_FLAGS
+      "${CMAKE_EXE_LINKER_FLAGS} /DEBUG")
+endif()
+
 if(WIN32)
 set(YPSPUR_DIR $ENV{SPUR_ROOT})
 set(YPSPUR_INCLUDE_DIR ${YPSPUR_DIR}/include)
 set(YPSPUR_LIB_DIR ${YPSPUR_DIR}/lib)
-set(YPSPUR_LIBRARY ypspur)
+set(YPSPUR_LIBRARY libypspur_dll)
 else(WIN32)
-message("not win")
+
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
 find_package(YPSpur)
 endif(WIN32)
