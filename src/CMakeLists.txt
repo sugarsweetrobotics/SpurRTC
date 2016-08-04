@@ -52,6 +52,7 @@ endif()
 
 add_executable(${PROJECT_NAME}Comp ${standalone_srcs}
   ${comp_srcs} ${comp_headers} ${ALL_IDL_SRCS})
+add_dependencies(${PROJECT_NAME} ALL_IDL_TGT)
 target_link_libraries(${PROJECT_NAME}Comp ${OPENRTM_LIBRARIES} ${YPSPUR_LIBRARY})
 
 if(WIN32)
